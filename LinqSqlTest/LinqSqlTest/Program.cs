@@ -6,13 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
+using System.Reflection;
 
 namespace LinqSqlTest
 {
     [Database(Name="Northwind")]
     public partial class Northwind:DataContext
     {
-        public Northwind(): base("Data Source=.; Initial Catalog=Northwind; Integrated Security=True;")
+        public Northwind(): base("Data Source=C0010490087\\SQLEXPRESS; Initial Catalog=Northwind; Integrated Security=True;")
         {
 
         }
@@ -29,6 +30,12 @@ namespace LinqSqlTest
             {
                 return this.GetTable<Kategori>();
             }
+        }
+        [Function(Name = "dbo.EnUzunSatistakiUrun")]
+        public ISingleResult<Urun> EnUzunSatistakiUrun()
+        {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+            return ((ISingleResult<Urun>)(result.ReturnValue));
         }
     }
     [Table(Name ="dbo.Table_Urun")]
@@ -113,20 +120,78 @@ namespace LinqSqlTest
             get { return this._KategoriAdi; }
             set { this._KategoriAdi = value; }
         }
+
     }
     class Program
     {
         static void Main(string[] args)
         {
-            //Northwind db = new Northwind();
+            Northwind db = new Northwind();
 
             //var urunler = from p in db.Urunler
+            //              where p.Fiyat > 100
             //              select p;
+
+            //var urunler = from u in db.Urunler
+            //              join k in db.Kategoriler
+            //              on u.KategoriId equals k.KategoriId
+            //              select new { u.UrunAdi, k.KategoriAdi, u.Fiyat };
 
             //foreach (var urun in urunler)
             //{
-            //    Console.WriteLine(urun.UrunAdi);
+            //    Console.WriteLine(urun.UrunAdi + " " + urun.KategoriAdi + " " + urun.Fiyat);
             //}
+
+            //var kategoriler = (from k in db.Kategoriler select k.KategoriId)
+            //    .Except((from u in db.Urunler select u.KategoriId).Distinct());
+
+            //foreach (var item in kategoriler)
+            //{
+            //    Console.WriteLine(item.Value);
+            //}
+
+            //var urunler2 = from u in db.Urunler
+            //               where u.UrunAdi.Contains("A")
+            //               select u.UrunAdi;
+
+            //foreach (var urun in urunler2)
+            //{
+            //    Console.WriteLine(urun);
+            //}
+
+            //yeni kayıt ekle örneği
+            //Kategori yeniKategori = new Kategori();
+            //yeniKategori.KategoriId = 9;
+            //yeniKategori.KategoriAdi = "Hediyelik Eşya";
+
+            //db.Kategoriler.InsertOnSubmit(yeniKategori);
+            //db.SubmitChanges();
+
+            ////tüm fiyatlara 5 ekle örneği
+
+            //var urunler = from u in db.Urunler
+            //              select u;
+
+            //foreach (var item in urunler)
+            //{
+            //    item.Fiyat += 5;
+            //}
+
+            //db.SubmitChanges();
+
+            ////kayıt silme örneği
+
+            //var silinecek = (from u in db.Urunler
+            //                 where u.UrunId == 8
+            //                 select u).Single();
+
+            //db.Urunler.DeleteOnSubmit(silinecek);
+            //db.SubmitChanges();
+
+            //stored procedure örneği
+
+            string urunAdi = db.EnUzunSatistakiUrun().Single().UrunAdi;
+            Console.WriteLine(urunAdi);
         }
     }
 }

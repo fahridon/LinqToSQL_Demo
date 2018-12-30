@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Northwind" Class="NorthwindDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=C0010490087\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True" SettingsObjectName="LinqToSQL_Demo_Auto.Properties.Settings" SettingsPropertyName="NorthwindConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Table_Kategori" Member="Table_Kategoris">
+    <Type Name="Table_Kategori">
+      <Column Name="KategoriId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KategoriAdi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Table_Urun" Member="Table_Uruns">
+    <Type Name="Table_Urun">
+      <Column Name="UrunId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UrunAdi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Fiyat" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="KategoriId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SatisBaslangicTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SatisBitisTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.EnUzunSatistakiUrun" Method="EnUzunSatistakiUrun">
+    <ElementType Name="EnUzunSatistakiUrunResult">
+      <Column Name="UrunId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UrunAdi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Fiyat" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="KategoriId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SatisBaslangicTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SatisBitisTarihi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

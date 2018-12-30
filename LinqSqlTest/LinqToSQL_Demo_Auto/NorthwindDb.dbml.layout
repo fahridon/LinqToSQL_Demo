@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NorthwindDb">
+  <DataContextMoniker Name="/NorthwindDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="91bd3b6c-eef3-4730-9406-0c94ddf0d31c" absoluteBounds="0.5, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/NorthwindDbDataContext/Table_Kategori" />
+      <nestedChildShapes>
+        <elementListCompartment Id="962cf5c4-e012-430c-847b-144571e0fc42" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="514e2974-2a56-4a42-913b-0ea7082a3026" absoluteBounds="0.5, 2, 2, 1.9631982421875">
+      <DataClassMoniker Name="/NorthwindDbDataContext/Table_Urun" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b840c403-e937-47db-bc22-36c16ff278dc" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
